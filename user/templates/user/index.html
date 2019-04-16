@@ -5,6 +5,10 @@
     <title>Index</title>
 </head>
 <body>
-<h1> It's your gift list</h1>
+{% if user.is_authenticated %}
+    <h1>{{ user.username }}'s gift list</h1>
+    {%else  %}
+    <h2>please log in again</h2>
+{% endif %}
 </body>
 </html>
