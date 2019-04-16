@@ -15,9 +15,8 @@ Including another URLconf
 """
 
 from django.urls import path
-from.import views
+from . import views
 urlpatterns = [
     path(' ', views.index, name='index'),
-    path(' ', include('user.urls')),
-    path('accounts/', include('django.contrib.auth.url'))
+
 ]
