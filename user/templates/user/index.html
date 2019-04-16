@@ -6,7 +6,7 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-    <h1>{{ user.username }}'s gift list</h1>
+    <h1>success! {{ user.username }}'s gift list</h1>
     {%else  %}
     <h2>please log in again</h2>
 {% endif %}
