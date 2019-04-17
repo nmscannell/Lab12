@@ -53,15 +53,20 @@ class loginscreen(View):
             message = "Account not found"
             return render(request, 'registration/login.html', {"message": message})
 
-        request.session["currentUser"] = CurrentUser
+        request.session["currentUser"] = CurrentUser.name
         request.session.set_expiry(300)
         return redirect('/gift/')
 
 
 class giftpage(View):
     def get(self, request):
-        user = request.session.get("currentUser", 0)
-        return render(request, 'user/gifts.html', {"user": user})
+        currentuser = request.session.get("currentUser")
+        account = user.objects.get(name=currentuser)
+        list = usergift.objects.filter(user=account)
+        giftList = []
+        for a in list:
+            giftList.append(str(a.gift))
+        return render(request, 'user/gifts.html', {"user": currentuser, "giftlist": giftList})
 
     def post(self, request):
         return render(request, 'user/gifts.html')

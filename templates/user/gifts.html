@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-    {{ user }}
-    {% if user.is_authenticated %}
-        {% for gift in gifts %}
-
+    {{ user }}'s Gift list<br>
+        {% for gift in giftlist %}
+            {{ gift }}<br>
         {% endfor %}
-    {% endif %}
 {% endblock content %}
