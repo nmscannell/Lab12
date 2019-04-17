@@ -19,5 +19,6 @@ from.import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('register', views.register, name='register'),
-    path('login/', views.loginscreen.as_view())
+    path('login/', views.loginscreen.as_view()),
+    path('gift/', views.giftpage.as_view())
 ]

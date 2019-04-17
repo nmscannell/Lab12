@@ -7,6 +7,8 @@ class user(models.Model):
     name = models.CharField(max_length=12, default="")
     password = models.CharField(max_length=12, default="")
 
+    def __str__(self):
+        return self.name
 
 class gift(models.Model):
     name = models.CharField(max_length=12, default="")
