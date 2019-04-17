@@ -7,8 +7,9 @@
 <body>
 {% if user.is_authenticated %}
     <h1>success! {{ user.username }}'s gift list</h1>
-    {%else  %}
-    <h2>please log in again</h2>
+    {% else  %}
+    <h2>log in is required</h2>
+
 {% endif %}
 </body>
 </html>
