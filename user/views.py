@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.views import View
+from user.models import user,gift, usergift
 # from user_auth.forms import UserRegisterForm
 
 
@@ -30,3 +32,36 @@ def register(request):
     else: form = UserCreationForm()
     context = {'form':form}
     return render(request, 'registration/register.html', context)
+
+
+class loginscreen(View):
+
+    def get(self, request):
+        return render(request, 'registration/login.html')
+
+    def post(self, request):
+        username = str(request.POST["username"])
+        password = str(request.POST["password"])
+        message = ""
+        try:
+            CurrentUser = user.objects.get(name=username)
+            if CurrentUser.password != password:
+                message = "Incorrect password"
+                return render(request, 'registration/login.html', {"message": message})
+
+        except user.DoesNotExist:
+            message = "Account not found"
+            return render(request, 'registration/login.html', {"message": message})
+
+        request.session["currentUser"] = CurrentUser
+        request.session.set_expiry(300)
+        return redirect('/gift/')
+
+
+class giftpage(View):
+    def get(self, request):
+        user = request.session.get("currentUser", 0)
+        return render(request, 'user/gifts.html', {"user": user})
+
+    def post(self, request):
+        return render(request, 'user/gifts.html')
