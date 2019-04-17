@@ -6,18 +6,14 @@
 </head>
 <body>
 <h1>login</h1>
-    {% if form.errors %}
-    <p>please retype it</p>
-    {% endif %}
-
-    <form method = "post" action = "{%url 'login' %}">
+    <form method = "post" action = "/login/">
         {% csrf_token %}
-
-        <p>username: {{ form.username }}</p>
-       <p>password: {{ form.password }}</p>
+        Username: <input type = "text" name="username"><br>
+        password <input type="password" name="password"><br>
        <p> <input type = "submit" value="login"></p>
         <input type = "hidden" name="next" value="{{ next }}">
     </form>
+{{ message }}<br>
 <a href="http://127.0.0.1:8000/register">Do you want to create an account?</a>
 </body>
 </html>
