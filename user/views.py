@@ -20,6 +20,7 @@ def register(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
+            request.session.set_expiry(300)
             login(request, user)
             messages.success(request, 'success!')
             return redirect('index')
