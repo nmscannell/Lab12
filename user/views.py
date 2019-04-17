@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.views import View
 # from user_auth.forms import UserRegisterForm
 
 
@@ -30,3 +31,11 @@ def register(request):
     else: form = UserCreationForm()
     context = {'form':form}
     return render(request, 'registration/register.html', context)
+
+
+class loginscreen(View):
+    def get(self, request):
+        return render(request, 'registration/login.html')
+
+    def poat(self, request):
+        return render(request, 'registration/login.html')
