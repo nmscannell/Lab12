@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
-    {% block content %}
-         <div class="vertical-menu">
+<div class="vertical-menu">
             <a href="login.html">Home</a>
              <a href="register.html">Registration</a>
             <a href="users.html">Users</a>
             <a href="gifts.html">Gifts</a>
          </div>
+    {% block content %}
     {% endblock content %}
 </body>
 </html>

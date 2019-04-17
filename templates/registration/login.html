@@ -1,11 +1,5 @@
 {% extends "base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
+{% block content %}
 <h1>login</h1>
     <form method = "post" action = "/login/">
         {% csrf_token %}
@@ -16,5 +10,4 @@
     </form>
 {{ message }}<br>
 <a href="http://127.0.0.1:8000/register">Do you want to create an account?</a>
-</body>
-</html>
+{% endblock content %}

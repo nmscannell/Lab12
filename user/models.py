@@ -13,6 +13,9 @@ class user(models.Model):
 class gift(models.Model):
     name = models.CharField(max_length=12, default="")
 
+    def __str__(self):
+        return self.name
+
 
 class usergift(models.Model):
     user = models.ForeignKey(user, on_delete=models.CASCADE)
